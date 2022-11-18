@@ -4,8 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 TextTheme textTheme() {
   return TextTheme(
     headline1: GoogleFonts.openSans(fontSize: 18.0, color: Colors.black),
-    headline2: GoogleFonts.openSans(
-        fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.bold),
+    headline2: GoogleFonts.openSans(fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.bold),
     bodyText1: GoogleFonts.openSans(fontSize: 16.0, color: Colors.black),
     bodyText2: GoogleFonts.openSans(fontSize: 14.0, color: Colors.grey),
     subtitle1: GoogleFonts.openSans(fontSize: 15.0, color: Colors.black),
@@ -14,16 +13,11 @@ TextTheme textTheme() {
 
 AppBarTheme appTheme() {
   return AppBarTheme(
+    foregroundColor: Colors.black,
     centerTitle: false,
     color: Colors.white,
     elevation: 0.0,
-    textTheme: TextTheme(
-      headline6: GoogleFonts.nanumGothic(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-        color: Colors.black,
-      ),
-    ),
+    titleTextStyle: textTheme().headline6,
   );
 }
 
@@ -33,7 +27,15 @@ ThemeData theme() {
     textTheme: textTheme(),
     appBarTheme: appTheme(),
     primaryColor: Colors.orange,
-    bottomNavigationBarTheme:
-        BottomNavigationBarThemeData(selectedItemColor: Colors.orange),
+    bottomNavigationBarTheme: bottomNavigationBarTheme(),
+  );
+}
+
+BottomNavigationBarThemeData bottomNavigationBarTheme() {
+  return BottomNavigationBarThemeData(
+    type: BottomNavigationBarType.fixed,
+    selectedItemColor: Colors.orange,
+    backgroundColor: Colors.white,
+    unselectedItemColor: Colors.black,
   );
 }
