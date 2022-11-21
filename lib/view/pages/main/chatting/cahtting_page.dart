@@ -1,3 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carrot_market/models/chat_message.dart';
+import 'package:carrot_market/view/pages/main/chatting/components/chat_body.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChattingPage extends StatelessWidget {
@@ -5,9 +9,28 @@ class ChattingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        child: Text("ChattingPage"),
+    return Scaffold(
+      backgroundColor: Colors.grey[100],
+      appBar: AppBar(
+        title: Text("채팅"),
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.search)),
+          IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.plus_rectangle_on_rectangle)),
+          IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.bell)),
+        ],
+      ),
+      body: ListView(
+        children: [
+          ...List.generate(
+            chatMessageList.length,
+            (index) => Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: ChatBody(
+                chatMessage: chatMessageList[index],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
