@@ -27,8 +27,8 @@ class NeighborhoodLifePage extends StatelessWidget {
             (index) => Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
               child: LifeBody(
-                  // neighborhoodLifeList: neighborhoodLifeList[index],
-                  ),
+                neighborhoodLife: neighborhoodLifeList[index],
+              ),
             ),
           ),
         ],
