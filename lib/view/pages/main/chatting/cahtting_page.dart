@@ -23,11 +23,8 @@ class ChattingPage extends StatelessWidget {
         children: [
           ...List.generate(
             chatMessageList.length,
-            (index) => Padding(
-              padding: const EdgeInsets.only(bottom: 8.0),
-              child: ChatBody(
-                chatMessage: chatMessageList[index],
-              ),
+            (index) => ChatBody(
+              chatMessage: chatMessageList[index],
             ),
           ),
         ],

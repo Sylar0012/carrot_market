@@ -13,48 +13,45 @@ class ChatBody extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 15.0, bottom: 15.0, right: 20.0, left: 20.0),
+          padding: const EdgeInsets.only(top: 10, right: 15, left: 15, bottom: 10),
           child: Row(
             children: [
-              Column(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(40),
-                    child: CachedNetworkImage(
-                      imageUrl: chatMessage.profileImage,
-                      width: 45,
-                      height: 45,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ],
+              ClipRRect(
+                borderRadius: BorderRadius.circular(40),
+                child: CachedNetworkImage(
+                  imageUrl: chatMessage.profileImage,
+                  width: 45,
+                  height: 45,
+                  fit: BoxFit.cover,
+                ),
               ),
               SizedBox(width: 16),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: chatMessage.sender,
-                          style: textTheme().bodyText1,
-                        ),
-                        TextSpan(
-                          text: "${chatMessage.location}ㆍ${chatMessage.sendDate}",
-                          style: textTheme().subtitle2,
-                        ),
-                      ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: chatMessage.sender,
+                            style: textTheme().bodyText1,
+                          ),
+                          TextSpan(
+                            text: "${chatMessage.location}ㆍ${chatMessage.sendDate}",
+                            style: textTheme().subtitle2,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Text(
-                    chatMessage.message,
-                    style: textTheme().bodyText1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
+                    Text(
+                      chatMessage.message,
+                      style: textTheme().bodyText1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
               ),
-              const Spacer(),
               Visibility(
                 visible: chatMessage.imageUri != null,
                 child: Padding(
